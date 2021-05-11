@@ -5,16 +5,21 @@ from django.db import models
 class Brand(models.Model):
     marca=models.CharField(max_length=150, null=False)
     modelo_marca=models.CharField(max_length=150, null=False)
-    created_at=models.DateTimeField()
-    updated_at=models.DateTimeField()
-    delete_at=models.DateTimeField()
+    created_at=models.DateTimeField(auto_now=True, null=True)
+    updated_at=models.DateTimeField(auto_now=True, null=True)
+    delete_at=models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.marca
 
 class BrandReference(models.Model):
     reference=models.CharField(max_length=150, null=False)
     brand_id=models.ForeignKey(Brand, on_delete=models.CASCADE)
-    created_at=models.DateTimeField()
-    updated_at=models.DateTimeField()
-    delete_at=models.DateTimeField()
+    created_at=models.DateTimeField(auto_now=True, null=True)
+    updated_at=models.DateTimeField(auto_now=True, null=True)
+    delete_at=models.DateTimeField(null=True)
+    def __str__(self):
+        return self.reference
 
 class Auto(models.Model):
     brand_id=models.ForeignKey(Brand, on_delete=models.CASCADE)
@@ -29,6 +34,9 @@ class Auto(models.Model):
     kilometraje=models.IntegerField(default=0) 
     cilindraje=models.IntegerField(default=0) 
     tipo_combustible=models.CharField(max_length=150, null=False, default="")
-    created_at=models.DateTimeField(auto_now=True)
-    updated_at=models.DateTimeField(auto_now=True)
-    delate_at=models.DateTimeField(auto_now=True)
+    created_at=models.DateTimeField(auto_now=True, null=True)
+    updated_at=models.DateTimeField(auto_now=True, null=True)
+    delete_at=models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.modelo
