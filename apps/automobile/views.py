@@ -6,4 +6,6 @@ def index(request):
 
 def portfolio(request):
     return HttpResponse("Bienvenidos a nuestro portafolio")
-# Create your views here.
+
+def info(request, id):
+    return HttpResponse("ID de búsqueda %s" % id)

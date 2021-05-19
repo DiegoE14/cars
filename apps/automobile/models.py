@@ -4,13 +4,13 @@ from django.db import models
 
 class Brand(models.Model):
     marca=models.CharField(max_length=150, null=False)
-    modelo_marca=models.CharField(max_length=150, null=False)
+    modelo_marca=models.CharField("Modelo", max_length=150, null=False)
     created_at=models.DateTimeField(auto_now=True, null=True)
     updated_at=models.DateTimeField(auto_now=True, null=True)
-    delete_at=models.DateTimeField(null=True)
+    delete_at=models.DateTimeField("Fecha de eliminación",null=True)
 
     def __str__(self):
-        return self.marca
+        return self.marca, self.modelo_marca, self.created_at
 
 class BrandReference(models.Model):
     reference=models.CharField(max_length=150, null=False)
